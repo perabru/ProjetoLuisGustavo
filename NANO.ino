@@ -12,12 +12,15 @@ DHT dht(DHTPIN, DHTTYPE);
 
 char data = 0; 
 
+#define peltier 6
+
  
 void setup() 
 {
   Serial.begin(9600);
   Serial.println("DHTxx test!");
   dht.begin();
+ pinMode(peltier, OUTPUT);
 }
  
 void loop() 
@@ -46,8 +49,11 @@ void loop()
                     //  Serial.print(" %t");
                      // Serial.print("Temperatura: ");
                       Serial.print(t);
+                      digitalWrite(peltier,HIGH);
                      // Serial.println(" *C");
                     }
+           
+           
           }else if( data== '0' || data=='B') {
               Serial.print("desligado");
              }
